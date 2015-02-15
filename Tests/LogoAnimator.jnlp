@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jnlp codebase="file:." href="LogoAnimator.jnlp">
+
+	<information>
+		<title>LogoAnimator Applet</title>
+		<vendor>Jim Corporation</vendor>
+		<offline-allowed/>
+	</information>
+	
+	<resources>
+		<java version="1.6+"/>
+		<jar href="LogoAnimator.jar" main="true"/>
+		<jar href="libs\javaws.jar"/>
+	</resources>
+	
+	<applet-desc
+		name="LogoAnimator"
+		main-class="com.jimcorp.tests.multimedia_21.LogoAnimator"
+		width="400"
+		height="300">
+	</applet-desc>
+</jnlp>
