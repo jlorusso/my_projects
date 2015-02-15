@@ -2,7 +2,9 @@ package com.jimcorp.decision_maker;
 
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.GridLayout;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -23,14 +25,14 @@ public class DecisionFrame extends JFrame {
 
 	private JButton decideButton;
 	private JTextField questionTextField;
-	private JTextField answerTextField;
+	private JLabel answerLabel;
 	private JLabel questionLabel;
 	private static final String questionTip = "Type question here";
 	
 	
 	public DecisionFrame() {
 		super("Decision Maker 1.0");
-		GridLayout layout = new GridLayout(2, 2);
+		GridBagLayout layout = new GridBagLayout();
 		this.setLayout(layout);
 		try {
 			for (LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
@@ -47,9 +49,18 @@ public class DecisionFrame extends JFrame {
 		
 		questionLabel = new JLabel("What are you having trouble deciding on this time?");
 		questionLabel.setBackground(Color.WHITE);
-		questionLabel.setHorizontalAlignment(JTextField.CENTER);
+		questionLabel.setHorizontalAlignment(JTextField.LEFT);
 		questionLabel.setVisible(true);
-		this.add(questionLabel, "1");
+		GridBagConstraints qLblC = new GridBagConstraints();
+		qLblC.gridx = 0;
+		qLblC.gridy = 0;
+		qLblC.gridwidth = 6;
+		qLblC.gridheight = 1;
+		qLblC.weightx = 1;
+		qLblC.insets = new Insets(0, 5, 10, 0);
+		qLblC.anchor = GridBagConstraints.LINE_START;
+		qLblC.fill = GridBagConstraints.HORIZONTAL;
+		add(questionLabel, qLblC);
 		
 		questionTextField = new JTextField();
 		questionTextField.setFont(new Font("Sans Serif", Font.ITALIC, 12));
@@ -66,7 +77,14 @@ public class DecisionFrame extends JFrame {
 			}
 			
 		});
-		this.add(questionTextField, "2");
+		GridBagConstraints qTxtC = new GridBagConstraints();
+		qTxtC.gridx = 1;
+		qTxtC.gridy = 1;
+		qTxtC.gridwidth = 8;
+		qTxtC.gridheight = 2;
+		qTxtC.weightx = .75;
+		qTxtC.fill = GridBagConstraints.HORIZONTAL;
+		add(questionTextField, qTxtC);
 		
 		decideButton = new JButton("DECIDE");
 		decideButton.setVisible(true);
@@ -89,28 +107,42 @@ public class DecisionFrame extends JFrame {
 					Decision decision = new Decision();
 					String strDecision = decision.getStringDecision();
 					boolean boolDecision = decision.getDecision();
-					answerTextField.setText(strDecision);
+					answerLabel.setText(strDecision);
 					
 					if(boolDecision == true)
-						answerTextField.setBackground(Color.GREEN);
+						answerLabel.setBackground(Color.GREEN);
 					else
-						answerTextField.setBackground(Color.RED);
+						answerLabel.setBackground(Color.RED);
 				
 					System.out.println(strDecision);
 				}
 			}
 			
 		});
-		this.add(decideButton, "3");
+		GridBagConstraints dBtnC = new GridBagConstraints();
+		dBtnC.gridx = 10;
+		dBtnC.gridy = 1;
+		dBtnC.gridheight = 2;
+		dBtnC.gridwidth = 2;
+		dBtnC.weightx = .25;
+		dBtnC.fill = GridBagConstraints.HORIZONTAL;
+		add(decideButton, dBtnC);
 
 		
-		answerTextField = new JTextField("");
-		answerTextField.setBackground(Color.WHITE);
-		answerTextField.setFont(new Font("Sans Serif", Font.BOLD, 24));
-		answerTextField.setHorizontalAlignment(JTextField.CENTER);
-		answerTextField.setEditable(false);
-		answerTextField.setVisible(true);
-		this.add(answerTextField, "4");
+		answerLabel = new JLabel("");
+		answerLabel.setOpaque(true);
+		answerLabel.setBackground(Color.WHITE);
+		answerLabel.setFont(new Font("Sans Serif", Font.BOLD, 24));
+		answerLabel.setHorizontalAlignment(JLabel.CENTER);
+		GridBagConstraints ansTxtC = new GridBagConstraints();
+		ansTxtC.gridx = 1;
+		ansTxtC.gridy = 3;
+		ansTxtC.gridwidth = 10;
+		ansTxtC.gridheight = 2;
+		ansTxtC.weightx = 1;
+		ansTxtC.fill = GridBagConstraints.HORIZONTAL;
+		ansTxtC.insets = new Insets(10, 10, 10, 10);
+		add(answerLabel, ansTxtC);
 		
 
 	}

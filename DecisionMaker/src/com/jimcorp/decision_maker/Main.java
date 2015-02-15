@@ -8,7 +8,7 @@ public class Main {
 		
 		DecisionFrame application = new DecisionFrame();
 		application.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		application.setSize(700, 600);
+		application.setSize(500, 250);
 		application.setVisible(true);
 	}
 
