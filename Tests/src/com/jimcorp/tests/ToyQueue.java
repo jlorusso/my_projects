@@ -16,7 +16,6 @@ public class ToyQueue extends LinkedBlockingDeque<Toy> {
 			notifyAll();
 		}
 		
-		
 		return totalWeight;
 	}
 }

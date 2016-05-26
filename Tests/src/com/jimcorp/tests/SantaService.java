@@ -1,18 +1,16 @@
 package com.jimcorp.tests;
 
-import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
-import java.util.concurrent.LinkedBlockingDeque;
 
 public class SantaService {
 
 	public static void main(String[] args) {
 		
-		ToyQueue<Toy> toyQueue = new LinkedBlockingDeque<Toy>();
+		ToyQueue toyQueue = new ToyQueue();
 		
 		Elf larry = new Elf("Larry", 10, 5, 20, toyQueue);
 		Elf curly = new Elf("Curly", 6, 4, 6, toyQueue);
